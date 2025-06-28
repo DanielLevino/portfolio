@@ -494,6 +494,18 @@ span,
     color: white;
 }
 
+.version {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(116, 112, 112, 0.8);
+}
+
 /*Scroolbar*/
 ::-webkit-scrollbar {
     width: 15px;
