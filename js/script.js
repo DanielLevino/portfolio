@@ -5,9 +5,6 @@ let navbar = document.querySelector('.navbar');
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
-console.log(navbar.classList);
-
-
 window.onscroll = () => {
     sections.forEach(sec => {
 
