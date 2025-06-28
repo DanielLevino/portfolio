@@ -399,6 +399,27 @@ span,
     margin: auto;
 }
 
+/*Section Curriculo*/
+.curriculo {
+    background-color: var(--second-color);
+}
+.curriculo-container .btn-group{
+    justify-content: center;
+    align-items: center;
+}
+
+.curriculo-container .btn-group a {
+    font-size: 4rem;
+}
+
+.curriculo-text {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.8;
+    max-width: 1000px;
+    margin: 2rem 8rem 8rem;
+}
+
 /*Section Contact*/
 .contact form {
     display: grid;
@@ -674,6 +695,9 @@ span,
     .service-info p {
         text-align: justify;
         max-height: none;
+    }
+    .curriculo .btn-group a {
+        font-size: 2.5rem;
     }
     .contact form {
         display: block;
