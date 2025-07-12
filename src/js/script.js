@@ -42,3 +42,48 @@ document.getElementById('sendMessage').addEventListener('click', function() {
 
     window.open(url, '_blank');
 });
+
+const swiper = new Swiper('.card-wrapper', {
+    loop: true,
+    spaceBetween:30,
+
+    // If we need pagination
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    breakpoints: {
+        0: {
+            slidesPerView:1
+        },
+        768: {
+            slidesPerView:2
+        },
+        1024: {
+            slidesPerView:3
+        }
+    }
+});
+
+function openImgModal(image) {
+  const modal = document.getElementById('modal');
+  const imgAmpliada = document.getElementById('full-image');
+  imgAmpliada.src = image.src;
+  modal.style.display = 'flex';
+}
+
+function closeImgModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+function openDataUrl(el) {
+    window.open(el.dataset.url, '_blank');
+}
