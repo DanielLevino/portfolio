@@ -64,12 +64,9 @@ const swiper = new Swiper('.card-wrapper', {
         0: {
             slidesPerView:1
         },
-        768: {
+        986: {
             slidesPerView:2
         },
-        1024: {
-            slidesPerView:3
-        }
     }
 });
 
@@ -87,3 +84,48 @@ function closeImgModal() {
 function openDataUrl(el) {
     window.open(el.dataset.url, '_blank');
 }
+
+const typingElement = document.getElementById("typing");
+
+const palavras = [
+  "Software Engineer!",
+  "Fullstack Developer!",
+  "Game Developer!",
+  "Mobile Developer!",
+  "Software Tester!",
+  "Businessperson"
+];
+
+let palavraIndex = 0;
+let letraIndex = 0;
+let apagando = false;
+let velocidade = 100;
+
+function digitar() {
+  const palavraAtual = palavras[palavraIndex];
+
+  if (!apagando) {
+    // digitando
+    typingElement.textContent = palavraAtual.substring(0, letraIndex + 1);
+    letraIndex++;
+
+    if (letraIndex === palavraAtual.length) {
+      apagando = true;
+      setTimeout(digitar, 1500);
+      return;
+    }
+  } else {
+    // apagando
+    typingElement.textContent = palavraAtual.substring(0, letraIndex - 1);
+    letraIndex--;
+
+    if (letraIndex === 0) {
+      apagando = false;
+      palavraIndex = (palavraIndex + 1) % palavras.length;
+    }
+  }
+
+  setTimeout(digitar, apagando ? 50 : velocidade);
+}
+
+digitar();
