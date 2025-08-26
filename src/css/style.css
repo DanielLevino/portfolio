@@ -4,7 +4,7 @@
     --text-color: white;
     --main-color: #d400ff;
     --second-text-color: #080808;
-    --body-color: #f0f0f0;
+    --body-color: #080808;
 }
 
 * {
@@ -26,6 +26,14 @@ html {
 body {
     background-color: var(--body-color);
     color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
 }
 
 /* Header*/
@@ -34,7 +42,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 3vw;
+    padding:1vw 3vw;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     display: flex;
@@ -93,7 +101,7 @@ body {
 
 section {
     min-height: 100vh;
-    padding: 10rem 12%  10rem;
+    padding: 15% 5%;
 }
 
 /*Section Home*/
@@ -101,7 +109,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15rem;
+    gap: 5rem;
     background-color: var(--bg-color);
 }
 
@@ -109,7 +117,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    text-align: left;
+    text-align: justify;
     justify-content: center;
     margin-top: 3rem;
 }
@@ -134,11 +142,12 @@ span,
 
 .home-img {
     border-radius: 50%;
+    width: 60%;
 }
 .home-img img {
     position: relative;
     top: 3rem;
-    width: 32vw;
+    width: 100%;
     border-radius: 50%;
     box-shadow: 0 0 25px var(--main-color);
     cursor: pointer;
@@ -218,32 +227,7 @@ span,
     color: var(--second-text-color);
 }
 
-.text-animation {
-    font-size: 34px;
-    font-weight: 600;
-    min-width: 280px;
-}
 
-.text-animation span {
-    position: relative;
-}
-
-.text-animation span::before {
-    content: "Web Developer";
-    color: var(--main-color);
-    animation: words 20s infinite;
-}
-
-.text-animation span::after {
-    content: "";
-    background-color: var(--bg-color);
-    position: absolute;
-    width: calc(100% + 8px);
-    height: 100%;
-    border-left: 3px solid var(--bg-color);
-    right: -8px;
-    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
-}
 
 .heading {
     font-size: 8rem;
@@ -394,10 +378,11 @@ span,
 .service-info h4 {
     font-size: 3rem;
     font-weight: 800;
-    line-height: 2;
+    line-height: 1;
 }
 
 .service-info p {
+    margin-top: 10px;
     font-size: 1.6rem;
     font-weight: 600;
     max-height: 100px;
@@ -529,12 +514,14 @@ span,
     background-color: var(--bg-color);
 }
 .curriculo-container .btn-group{
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .curriculo-container .btn-group a {
-    font-size: 4rem;
+    max-width: 50%;
+    font-size: 3rem;
 }
 
 .curriculo-text {
@@ -543,6 +530,7 @@ span,
     line-height: 1.8;
     max-width: 1000px;
     margin: 2rem 8rem 8rem;
+    text-align: justify;
 }
 
 /*Section Contact*/
@@ -575,6 +563,15 @@ span,
 .contact form .btn {
     margin-top: 2rem;
     width: 100%;
+    font-size: large;
+}
+
+.contact form .btn:hover {
+    transform: scale(1.05)translateY(-5px);
+    background-color: var(--main-color);
+    color: var(--second-text-color);
+    box-shadow: 0 0 25px var(--main-color);
+
 }
 
 /*Footer*/
@@ -691,89 +688,8 @@ span,
     background-color: var(--bg-color);
 }
 
-/*Animations*/
-@keyframes cursor {
-    to {
-        border-left: 2px solid var(--main-color);
-    }
-}
-
-@keyframes words {
-    0%, 20% {
-        content: "Software Engineer";
-    }
-    21%, 40%{
-        content: "Full Stack Developer";
-    }
-    41%, 60%{
-        content: "Game Developer";
-    }
-    61%, 80%{
-        content: "Mobile Developer";
-    }
-    81%, 100%{
-        content: "Software Tester";
-    }
-}
-
-@keyframes typing {
-    10%, 15%, 30%, 35%, 50%,
-    55%, 70%, 75%, 90%, 95%{
-        width: 0;
-    }
-    5%, 20%, 25%, 40%, 45%,
-    60%, 65%, 80%, 85% {
-        width: calc(100% + 8px);
-    }
-}
-
-/*Responsive*/
-@media(max-width:12085px) {
-    html {
-        font-size: 55%;
-    }
-
-    .services-container {
-        padding-bottom: 7rem;
-        grid-template-columns: repeat(2,1fr);
-        margin: 0 5rem;
-    }
-}
-@media(max-width:991px) {
-    header {
-        padding: 2rem 3%;
-    }
-    section {
-        padding: 10rem 3% 2rem;
-    }
-    .timeline-items::before {
-        left: 7px;
-    }
-    .timeline-item:nth-child(odd) {
-        padding-right: 0;
-        text-align: left;
-    }
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-        padding-left: 37px;
-    }
-    .timeline-dot {
-        left: 0;
-    }
-    .services {
-        padding-bottom: 7rem;
-    }
-    .testimonials .wrapper {
-        grid-template-columns: repeat(1,1fr);
-    }
-    .contact form {
-        flex-direction: column;
-    }
-    .footer {
-        padding: 2rem 3%;
-    }
-}
-@media(max-width:895px){
+/* 895px */
+@media(max-width:986px){ 
     #menu-icon {
         display: block;
     }
@@ -792,6 +708,7 @@ span,
     }
     .navbar.active {
         display: block;
+        max-width: 350px;
     }
     .navbar a {
         display: block;
@@ -810,7 +727,7 @@ span,
         font-size: 2.6rem;
     }
     .home-content h1 {
-        font-size: 8rem;
+        font-size: 4rem;
         margin-top: 1rem;
     }
     .home-content p {
@@ -819,14 +736,17 @@ span,
         text-align: justify;
     }
     .home-img {
-        width: 80vw;
+        width: 35vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .home-img img{
         width: 80%;
         margin: none;
     }
     .services {
-        padding: 0;
+        padding: 40px;
     }
     .service-box{
         height: inherit;
@@ -849,6 +769,16 @@ span,
         text-align: justify;
         max-height: none;
     }
+
+    .card-item {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card-link {
+        max-width: 80%;
+    }
+
     .curriculo .btn-group a {
         font-size: 2.5rem;
     }
