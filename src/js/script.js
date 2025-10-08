@@ -27,7 +27,7 @@ menuIcon.onclick = () => {
     navbar.classList.toggle('active');
 }
 
-document.getElementById('sendMessage').addEventListener('click', function() {
+function send() {
     const form = document.getElementById('contactForm');
 
     const nome = form.name.value;
@@ -41,20 +41,18 @@ document.getElementById('sendMessage').addEventListener('click', function() {
     const url = `https://wa.me/${numero}?text=${texto}`;
 
     window.open(url, '_blank');
-});
+};
 
 const swiper = new Swiper('.card-wrapper', {
     loop: true,
     spaceBetween:30,
 
-    // If we need pagination
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
         dynamicBullets: true
     },
 
-    // Navigation arrows
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',

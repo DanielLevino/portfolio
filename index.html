@@ -25,26 +25,16 @@
 
       <i class="bi bi-list" id="menu-icon"></i>
 
-      <nav class="navbar">
-        <a href="#home" class="active">Inicio</a>
-        <a href="#education">Formação</a>
-        <a href="#services">Conhecimento</a>
-        <a href="#portfolio">Portfólio</a>
-        <a href="#curriculo">Curriculo</a>
-        <a href="#contact">Contato</a>
+      <nav id="navbar" class="navbar">
+
       </nav>
     </header>
 
     <section class="home" id="home">
       <div class="home-content">
-        <h1>Olá, aqui fala <span>Daniel</span></h1>
-        <h3 class="text-animation">Eu sou <span id="typing"></span>|</h3>
-        <p>
-          Analista e Desenvolvedor de Sistemas pela FICR, com formação em Programação Mobile (Android Studio) pelo
-          IMD-UFRN e pós-graduação em Desenvolvimento Full Stack pela Descomplica. Atuo também como Game
-          Developer,
-          Product Owner em EdTech, com experiência em Testes Automatizados e Desenvolvimento de Bots e Robôs.
-        </p>
+        <h1 id="home-title"></h1>
+        <h3 class="text-animation"><span id="home-iam"></span><span id="typing"></span>|</h3>
+        <p id="home-resume"></p>
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/daniellevino/" target="_blank"><i class="bi bi-linkedin"></i></a>
           <a href="https://github.com/DanielLevino" target="_blank"><i class="bi bi-github"></i></a>
@@ -53,7 +43,7 @@
 
         <div class="btn-group">
           <!-- <a href="#" class="btn">Contratar</a> -->
-          <a href="#contact" class="btn">Contato</a>
+          <a id="home-contact" href="#contact" class="btn"></a>
         </div>
 
       </div>
@@ -63,15 +53,15 @@
     </section>
 
     <section class="education" id="education">
-      <h2 class="heading">Formação</h2>
+      <h2 id="education-title" class="heading"></h2>
       <div class="timeline-items">
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2020</div>
           <div class="timeline-content">
-            <h3>Graduação</h3>
-            <p>Análise e Desenvolvimento de Sistemas na Faculdade Imaculada Conceição de Recife (FICR).</p>
+            <h3 id="educ-title-1"></h3>
+            <p id="educ-desc-1"></p>
           </div>
         </div>
 
@@ -79,8 +69,8 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2021</div>
           <div class="timeline-content">
-            <h3>Estágio</h3>
-            <p>Estágio na startup Ti Saúde onde após, a conclusão do estágio, trabalhei por 3 anos.</p>
+            <h3 id="educ-title-2"></h3>
+            <p id="educ-desc-2"></p>
           </div>
         </div>
 
@@ -88,8 +78,8 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2024</div>
           <div class="timeline-content">
-            <h3>Pós Graduação</h3>
-            <p>Pós Graduação em Desenvolvimento Full Stack pela Descomplica</p>
+            <h3 id="educ-title-3"></h3>
+            <p id="educ-desc-3"></p>
           </div>
         </div>
 
@@ -97,231 +87,68 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2025</div>
           <div class="timeline-content">
-            <h3>Pós Graduação <span>(em curso)</span></h3>
-            <p>Pós Graduação em Tecnologias Aplicadas à Educação</p>
+            <h3 id="educ-title-4"></h3>
+            <p id="educ-desc-4"></p>
           </div>
         </div>
     </section>
 
     <section class="services" id="services">
-      <h2 class="heading">Conhecimento</h2>
-
+      <h2 class="heading"></h2>
       <div class="services-container">
         <div class="service-box">
           <div class="service-info">
-            <h4>Software Engineer</h4>
-            <p>
-              Formado em Análise e Desenvolvimento de Sistemas, com experiência em desenvolvimento de
-              aplicações Web
-              (Node.js, Angular, MySQL), Desktop (.NET) e Mobile (Android Studio com Java).
-            </p>
+            <h4></h4>
+            <p></p>
           </div>
         </div>
 
         <div class="service-box">
           <div class="service-info">
-            <h4>Full Stack Developer</h4>
-            <p>
-              Mais de 3 anos de experiência em desenvolvimento Full Stack, utilizando Quasar Framework,
-              Vue.js, Laravel
-              (PHP) e MySQL, atuando tanto no frontend quanto no backend.
-            </p>
+            <h4></h4>
+            <p></p>
           </div>
         </div>
 
         <div class="service-box">
           <div class="service-info">
-            <h4>Game Developer</h4>
-            <p>
-              Desenvolvimento de jogos pela Danki Code, com conhecimentos em Java, Unity e Construct
-              2, voltado para criação de jogos 2D e protótipos interativos.
-            </p>
+            <h4></h4>
+            <p></p>
           </div>
         </div>
 
         <div class="service-box">
           <div class="service-info">
-            <h4>Mobile Developer</h4>
-            <p>
-              Certificado pelo Instituto Metrópole Digital (IMD-UFRN), com foco em desenvolvimento Android
-              utilizando
-              Android Studio e Java.
-            </p>
+            <h4></h4>
+            <p></p>
           </div>
         </div>
 
         <div class="service-box">
           <div class="service-info">
-            <h4>Software Tester / Test Automation</h4>
-            <p>
-              Experiência em automação de testes de software utilizando ferramentas como Puppeteer, Cypress e
-              Selenium,
-              com foco em testes de interface (UI) e validação de fluxos automatizados.
-            </p>
+            <h4></h4>
+            <p></p>
           </div>
         </div>
 
         <div class="service-box">
           <div class="service-info">
-            <h4>Web Development</h4>
-            <p>
-              Experiência sólida em desenvolvimento de interfaces e aplicações web utilizando HTML, CSS e
-              JavaScript, com
-              foco em layouts responsivos e experiência de usuário (UX). Atuação com frameworks e bibliotecas
-              modernas
-              como Vue.js, Quasar Framework e integração com APIs.
-            </p>
+            <h4></h4>
+            <p></p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="portfolio" id="portfolio">
-      <h2 class="heading">Portfólio</h2>
+      <h2 class="heading"></h2>
       <div class="container swiper">
         <div class="card-wrapper">
           <ul class="card-list swiper-wrapper">
-            <li class="card-item swiper-slide">
-              <div class="card-link">
-                <img src="./src/img/portfolio/pokedex.png" alt="" class="card-image clickable"
-                  onclick="openImgModal(this)">
-                <div class="badge-content">
-                  <p class="badge">Quasar</p>
-                  <p class="badge">Vue</p>
-                  <p class="badge">Vuex</p>
-                  <p class="badge">PokemonAPI</p>
-                </div>
-                <div class="card-text-content clickable" data-url="https://github.com/DanielLevino/quasar-vuex"
-                  onclick="openDataUrl(this)">
-                  <h2 class="card-title">Quasar pokedex</h2>
-                  <p class="card-description">
-                    Aplicação feita com Node, Quasar, Vue e Vuex, entre outras tecnologias, que simula
-                    uma
-                    pokedex e um jogo de captura, consumindo a PokemonAPI.
-                  </p>
-                </div>
-                <button class="card-btn material-symbols-rounded clickable"
-                  data-url="https://github.com/DanielLevino/quasar-vuex" onclick="openDataUrl(this)">
-                  arrow_forward
-                </button>
-              </div>
-            </li>
-            <li class="card-item swiper-slide">
-              <div class="card-link">
-                <img src="./src/img/portfolio/zelcoy.png" alt="" class="card-image clickable"
-                  onclick="openImgModal(this)">
-                <div class="badge-content">
-                  <p class="badge">Java</p>
-                  <p class="badge">Game Engine</p>
-                  <p class="badge">Topdown</p>
-                  <p class="badge">2D</p>
-                </div>
-                <div class="card-text-content clickable" data-url="https://github.com/DanielLevino/zelcoy"
-                  onclick="openDataUrl(this)">
-                  <h2 class="card-title">Zelcoy</h2>
-                  <p class="card-description">Jogo no estilo Topdown criado em Java com música, efeitos e
-                    imagens própios, com jogabilidade linear e avanço de fases.</p>
-                </div>
-
-                <button class="card-btn material-symbols-rounded clickable"
-                  data-url="https://github.com/DanielLevino/zelcoy" onclick="openDataUrl(this)">
-                  arrow_forward
-                </button>
-              </div>
-            </li>
-            <li class="card-item swiper-slide">
-              <div class="card-link">
-                <img src="./src/img/portfolio/labirinto.png" alt="" class="card-image clickable"
-                  onclick="openImgModal(this)">
-                <div class="badge-content">
-                  <p class="badge">Java</p>
-                  <p class="badge">Game Engine</p>
-                  <p class="badge">Recursivo</p>
-                </div>
-                <div class="card-text-content clickable" data-url="https://github.com/DanielLevino/labirinto_recursivo"
-                  onclick="openDataUrl(this)">
-                  <h2 class="card-title">Labirinto</h2>
-                  <p class="card-description">Labirinto jogável com renderização randômica e recursiva,
-                    gerando caminhos aleatórios.</p>
-                </div>
-
-                <button class="card-btn material-symbols-rounded clickable"
-                  data-url="https://github.com/DanielLevino/labirinto_recursivo" onclick="openDataUrl(this)">
-                  arrow_forward
-                </button>
-              </div>
-            </li>
-            <li class="card-item swiper-slide">
-              <div class="card-link">
-                <img src="./src/img/portfolio/radefi.png" alt="" class="card-image clickable"
-                  onclick="openImgModal(this)">
-                <div class="badge-content">
-                  <p class="badge">Python</p>
-                  <p class="badge">PyGame</p>
-                  <p class="badge">INPI</p>
-                  <p class="badge">Saúde</p>
-                </div>
-                <div class="card-text-content clickable" data-url="https://github.com/DanielLevino/Radefi"
-                  onclick="openDataUrl(this)">
-                  <h2 class="card-title">Radefi</h2>
-                  <p class="card-description">Aplicação em Python, usando ferramentas do PyGame</p>
-                </div>
-                <button class="card-btn material-symbols-rounded clickable"
-                  data-url="https://github.com/DanielLevino/Radefi" onclick="openDataUrl(this)">
-                  arrow_forward
-                </button>
-              </div>
-            </li>
-            <li class="card-item swiper-slide">
-              <div class="card-link">
-                <img src="./src/img/portfolio/Jogo-do-pulo.png" alt="" class="card-image clickable"
-                  onclick="openImgModal(this)">
-                <div class="badge-content">
-                  <p class="badge">Html</p>
-                  <p class="badge">Css</p>
-                  <p class="badge">JavaScript</p>
-                  <p class="badge">Canvas</p>
-                </div>
-                <div class="card-text-content clickable" data-url="https://daniel-levino.itch.io/jogo-do-pulo"
-                  onclick="openDataUrl(this)">
-                  <h2 class="card-title">
-                    Jogo do Pulo
-                  </h2>
-                  <p class="card-description">
-                    Infinite Runner contruído em HTML, CSS, JavaScript e Canvas.
-                  </p>
-                </div>
-                <button class="card-btn material-symbols-rounded clickable"
-                  data-url="https://daniel-levino.itch.io/jogo-do-pulo" onclick="openDataUrl(this)">
-                  arrow_forward
-                </button>
-              </div>
-            </li>
-            <li class="card-item swiper-slide">
-              <div class="card-link">
-                <img src="./src/img/portfolio/labirinto-html.png" alt="" class="card-image clickable"
-                  onclick="openImgModal(this)">
-                <div class="badge-content">
-                  <p class="badge">Html</p>
-                  <p class="badge">Css</p>
-                  <p class="badge">JavaScript</p>
-                  <p class="badge">Canvas</p>
-                </div>
-                <div class="card-text-content clickable" data-url="https://daniel-levino.itch.io/labirinto"
-                  onclick="openDataUrl(this)">
-                  <h2 class="card-title">
-                    Labirinto Html
-                  </h2>
-                  <p class="card-description">
-                    Labirinto com itens para pegar, contruído com Html, Css, JavaScript e Canvas.
-                  </p>
-                </div>
-                <button class="card-btn material-symbols-rounded clickable"
-                  data-url="https://daniel-levino.itch.io/labirinto" onclick="openDataUrl(this)">
-                  arrow_forward
-                </button>
-              </div>
-            </li>
+            <li class="card-item swiper-slide"></li>
+            <li class="card-item swiper-slide"></li>
+            <li class="card-item swiper-slide"></li>
+            <li class="card-item swiper-slide"></li>
           </ul>
           <div class="swiper-pagination"></div>
           <div class="swiper-btn swiper-button-prev"></div>
@@ -333,37 +160,14 @@
     <section class="curriculo" id="curriculo">
       <div class="heading">Currículo</div>
       <div class="curriculo-container">
-        <div class="curriculo-text">
-          <p>
-            Explore minha trajetória profissional mais recente na área de desenvolvimento, com experiências
-            sólidas em Front-End e Full Stack.
-            O documento reúne habilidades técnicas, projetos relevantes, ferramentas utilizadas e um resumo
-            objetivo do meu perfil como desenvolvedor.
-            <br />
-            <br />
-            👉 Baixe agora meu currículo atualizado e conheça minha jornada na tecnologia!
-          </p>
-        </div>
-        <div class="btn-group">
-          <a class="btn" href="src/pdf/Curriculo_2025.pdf" target="_blank">
-            Vizualizar Curriculo
-          </a>
-        </div>
+        <div class="curriculo-text"></div>
+        <div class="btn-group"></div>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <h2 class="heading">Contato</h2>
-      <form id="contactForm" action="">
-        <div class="input-group-2">
-          <textarea name="message" id="" cols="30" rows="10" placeholder="Messagem"></textarea>
-        </div>
-        <div class="input-box">
-          <input type="text" name="name" placeholder="Nome">
-          <input type="phone" name="phone" placeholder="Número">
-          <button class="btn" id="sendMessage">Enviar <i class="bi bi-whatsapp"></i></button>
-        </div>
-      </form>
+      <h2 class="heading"></h2>
+      <form id="contactForm"></form>
     </section>
 
     <footer class="footer">
@@ -373,18 +177,27 @@
         <a href="https://www.instagram.com/daniel.levinob/"><i class="bi bi-instagram"></i></a>
       </div>
 
-      <p class="copyright">© Daniel Levino <br> © Levino Tecnologia Limitada <br/> All Rights Reserved</p>
+      <p class="copyright">© Daniel Levino <br> © Levino Tecnologia Limitada <br /> All Rights Reserved</p>
     </footer>
 
     <div id="modal" class="modal" onclick="closeImgModal()">
       <img class="modal-content" id="full-image" />
     </div>
 
-    <div class="version">v2.05</div>
+    <div class="lang">
+      <a id="btn-pt"><img src="./src/img/translate/br_icon_128192.png" alt=""></a>
+      <a id="btn-en"><img src="./src/img/translate/gb_icon_128141.png" alt=""></a>
+    </div>
+
+    <div class="version">v3.00</div>
   </div>
 
+  <script type="module" src="./src/js/translate.js"></script>
+  <script type="module" src="./src/js/htmlInjector.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
   <script src="src/js/script.js"></script>
 </body>
 
