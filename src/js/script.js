@@ -6,20 +6,21 @@ let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
 window.onscroll = () => {
-    sections.forEach(sec => {
+  if(!navLinks.length) navLinks = document.querySelectorAll('header nav a');
 
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height =  sec.offsetHeight;
-        let id = sec.getAttribute('id');
+  sections.forEach(sec => {
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 150;
+    let height =  sec.offsetHeight;
+    let id = sec.getAttribute('id');
 
-        if(top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*='+id+']').classList.add('active');
-            })
-        }
-    })
+    if(top >= offset && top < offset + height) {
+      navLinks.forEach(links => {
+        links.classList.remove('active');
+        document.querySelector('header nav a[href*='+id+']').classList.add('active');
+      })
+    }
+  })
 }
 
 menuIcon.onclick = () => {
@@ -35,37 +36,34 @@ function send() {
     const msg = form.message.value;
 
     const texto = `Olá Daniel, meu nome é ${nome} e meu número é ${fone}. ${msg}`;
-
     const numero = '5581997194976';
-
     const url = `https://wa.me/${numero}?text=${texto}`;
-
     window.open(url, '_blank');
 };
 
 const swiper = new Swiper('.card-wrapper', {
-    loop: true,
-    spaceBetween:30,
+  loop: true,
+  spaceBetween:30,
 
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    dynamicBullets: true
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  breakpoints: {
+    0: {
+      slidesPerView:1
     },
-
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+    986: {
+      slidesPerView:2
     },
-
-    breakpoints: {
-        0: {
-            slidesPerView:1
-        },
-        986: {
-            slidesPerView:2
-        },
-    }
+  }
 });
 
 function openImgModal(image) {
@@ -80,7 +78,7 @@ function closeImgModal() {
 }
 
 function openDataUrl(el) {
-    window.open(el.dataset.url, '_blank');
+  window.open(el.dataset.url, '_blank');
 }
 
 const typingElement = document.getElementById("typing");
