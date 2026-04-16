@@ -4,7 +4,7 @@ Este é o repositório do meu portfólio profissional. Uma aplicação desenvolv
 
 ### 🔗 Live Demo
 Você pode visualizar o projeto online através do link abaixo:
-👉 **[https://seu-usuario.github.io/nome-do-repositorio](https://seu-usuario.github.io/nome-do-repositorio)**
+👉 **[https://https://daniellevino.github.io/portfolio](https://https://daniellevino.github.io/portfolio)**
 
 [English Version Below](#english-version)
 
