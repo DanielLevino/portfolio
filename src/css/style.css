@@ -63,7 +63,7 @@ body {
 }
 
 /* Nav */
-nav {
+header {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -75,9 +75,6 @@ nav {
 	padding: 1.5rem 4rem;
 	border-bottom: 1px solid transparent;
 	transition: all 0.4s;
-}
-
-nav.scrolled {
 	background: rgba(10, 10, 11, 0.88);
 	backdrop-filter: blur(20px);
 	border-bottom-color: var(--line);
@@ -108,6 +105,12 @@ nav.scrolled {
 
 .nav-links a:hover {
 	color: var(--text);
+}
+
+#menu-icon {
+    font-size: 1.8rem;
+    color: var(--main-color);
+    display: none;
 }
 
 /* Hero */
@@ -846,9 +849,43 @@ footer span {
 }
 
 @media (max-width: 900px) {
-	nav {
-		padding: 1.25rem 1.5rem;
-	}
+	#menu-icon {
+        display: inline-flex;
+        cursor: pointer; /* Importante para UX */
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        right: -100%; /* Começa escondido à direita */
+        width: 60%;
+        max-width: 250px;
+        padding: 1rem 3%;
+        background: rgba(10, 10, 11, 0.98); /* Combinando com seu header */
+        backdrop-filter: blur(20px);
+        border-bottom-left-radius: 2rem;
+        border-left: 2px solid var(--accent);
+        border-bottom: 2px solid var(--accent);
+        transition: all 0.4s ease; /* Animação suave */
+        display: block; /* Mude para block aqui, o 'right' controla o sumiço */
+    }
+
+    /* Esta classe será adicionada pelo JS */
+    nav.active {
+        right: 0;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* Organiza em lista */
+        gap: 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1rem;
+    }
 
 	section {
 		padding: 4rem 1.5rem;
@@ -856,6 +893,10 @@ footer span {
 
 	#hero {
 		padding: 7rem 1.5rem 4rem;
+	}
+
+	.hero-scroll {
+		left: 75%;
 	}
 
 	.about-grid,

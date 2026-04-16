@@ -17,6 +17,23 @@ import { t } from "./translate.js";
   }
   animRing();
 
+  const menuIcon = document.getElementById('menu-icon');
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('click', (e) => {
+    if (e.target.id === 'menu-icon') {
+        navbar.classList.toggle('active');
+        e.target.classList.toggle('bi-x'); 
+    } 
+    
+    else if (navbar.classList.contains('active')) {
+        if (!navbar.contains(e.target) || e.target.tagName === 'A') {
+            navbar.classList.remove('active');
+            menuIcon.classList.remove('bi-x');
+        }
+    }
+});
+
   // Nav scroll
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
@@ -62,7 +79,7 @@ import { t } from "./translate.js";
     
     var text = `Olá! Meu nome é ${name} (${email}).%0A%0A${message}`;
 
-    text = subject ? `*${subject}* ${text}`: text;
+    text = subject ? `*${subject}* %0A%0A${text}`: text;
     
     const wpUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
 
