@@ -1,127 +1,77 @@
+import { t } from "./translate.js";
 
-
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-
-window.onscroll = () => {
-  if(!navLinks.length) navLinks = document.querySelectorAll('header nav a');
-
-  sections.forEach(sec => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop - 150;
-    let height =  sec.offsetHeight;
-    let id = sec.getAttribute('id');
-
-    if(top >= offset && top < offset + height) {
-      navLinks.forEach(links => {
-        links.classList.remove('active');
-        document.querySelector('header nav a[href*='+id+']').classList.add('active');
-      })
-    }
-  })
-}
-
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bi-x');
-    navbar.classList.toggle('active');
-}
-
-function send() {
-    const form = document.getElementById('contactForm');
-
-    const nome = form.name.value;
-    const fone = form.phone.value;
-    const msg = form.message.value;
-
-    const texto = `Olá Daniel, meu nome é ${nome} e meu número é ${fone}. ${msg}`;
-    const numero = '5581997194976';
-    const url = `https://wa.me/${numero}?text=${texto}`;
-    window.open(url, '_blank');
-};
-
-const swiper = new Swiper('.card-wrapper', {
-  loop: true,
-  spaceBetween:30,
-
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-    dynamicBullets: true
-  },
-
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  breakpoints: {
-    0: {
-      slidesPerView:1
-    },
-    986: {
-      slidesPerView:2
-    },
+// Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+    requestAnimationFrame(animRing);
   }
-});
+  animRing();
 
-function openImgModal(image) {
-  const modal = document.getElementById('modal');
-  const imgAmpliada = document.getElementById('full-image');
-  imgAmpliada.src = image.src;
-  modal.style.display = 'flex';
-}
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
 
-function closeImgModal() {
-  document.getElementById('modal').style.display = 'none';
-}
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
 
-function openDataUrl(el) {
-  window.open(el.dataset.url, '_blank');
-}
+  // Form
 
-const typingElement = document.getElementById("typing");
+  const form = document.querySelector('.contact-form');
 
-const palavras = [
-  "Software Engineer!",
-  "Fullstack Developer!",
-  "Game Developer!",
-  "Mobile Developer!",
-  "Software Tester!",
-  "Businessperson"
-];
+  form.addEventListener('submit', (event)=>{
+    handleSubmit(event)
+  })
 
-let palavraIndex = 0;
-let letraIndex = 0;
-let apagando = false;
-let velocidade = 100;
-
-function digitar() {
-  const palavraAtual = palavras[palavraIndex];
-
-  if (!apagando) {
-    // digitando
-    typingElement.textContent = palavraAtual.substring(0, letraIndex + 1);
-    letraIndex++;
-
-    if (letraIndex === palavraAtual.length) {
-      apagando = true;
-      setTimeout(digitar, 1500);
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value
+    const message = document.getElementById('message').value;
+    
+    if(!name || !email || !message){
+      alert("Please fill in the required fields.");
       return;
     }
-  } else {
-    // apagando
-    typingElement.textContent = palavraAtual.substring(0, letraIndex - 1);
-    letraIndex--;
 
-    if (letraIndex === 0) {
-      apagando = false;
-      palavraIndex = (palavraIndex + 1) % palavras.length;
-    }
+    btn.disabled = true;
+
+    const phone = "5581997194976"; 
+    
+    var text = `Olá! Meu nome é ${name} (${email}).%0A%0A${message}`;
+
+    text = subject ? `*${subject}* ${text}`: text;
+    
+    const wpUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+
+    btn.textContent = t('contact.form.sending');
+    
+    setTimeout(() => {
+      window.open(wpUrl, '_blank');
+      btn.textContent = t('contact.form.sent');
+      document.getElementById('form-feedback').style.display = 'block';
+    }, 1200);
   }
-
-  setTimeout(digitar, apagando ? 50 : velocidade);
-}
-
-digitar();
+  

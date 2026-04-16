@@ -11,162 +11,268 @@ const btnEN = get("btn-en");
 const nav = get("navbar");
 
 function renderNav() {
-  nav.innerHTML = `
-  <a href="#home" class="active">${t("common.start")}</a>
-  <a href="#education">${t("common.education")}</a>
-  <a href="#services">${t("common.knowledge")}</a>
-  <a href="#portfolio">${t("common.portfolio")}</a>
-  <a href="#curriculo">${t("common.resume")}</a>
-  <a href="#contact">${t("common.contact")}</a>
-  `
+  nav.querySelector('.nav-links').innerHTML = 
+  `<li><a href="#about">${t('common.about')}</a></li>
+  <li><a href="#skills">Skills</a></li>
+  <li><a href="#projects">${t('common.projects')}</a></li>
+  <li><a href="#contact">${t('common.contact')}</a></li>
+  <li title="${t('common.title_resume')}">
+    <a href="./src/pdf/Curriculo_Daniel_Levino_2026.pdf" target="_blank">
+      ${t('common.resume')}
+      <span><i class="bi bi-cloud-download"></i></span>
+  </a></li>`
 }
 
-// =============== Home Section ===============>
+// =============== Hero Section ===============>
 
-const homeTitle = get("home-title");
-const homeIAm = get("home-iam");
-const homeResume = get("home-resume");
-const homeContact = get("home-contact")
+  const hero = get("hero");
 
-function renderHome() {
-  homeTitle.innerHTML = `${t("home.hi")} <span>Daniel</span>`;
-  homeIAm.innerHTML = t("home.iam");
-  homeResume.innerHTML = t("home.resume");
-  homeContact.innerHTML = t("common.contact")
-}
-
-// ============== Education Section =========== >
-
-const educTitle = get("education-title");
-const educ = Array.from({ length: 4 }, (_, i) => {
-  const idx = i + 1;
-  return {
-    idx: idx,
-    titleEl: get(`educ-title-${idx}`),
-    descEl: get(`educ-desc-${idx}`),
-  };
-});
-
-function renderEducation() {
-  educTitle.innerHTML = t("common.education");
-  educ.forEach(obj => {
-    obj.titleEl.innerHTML = t(`education.educTitle_${obj.idx}`);
-    obj.descEl.innerHTML = t(`education.educDesc_${obj.idx}`)
-  })
-}
-
-// ==================== Knowlege Section ================ >
-
-const knowledge = get("services")
-
-function renderKnowledge() {
-  knowledge.querySelector('h2').innerHTML = t("common.knowledge");
-  knowledge.querySelectorAll('.services-container .service-box')
-    .forEach((box, i) => {
-      box.querySelector('h4').innerHTML = t(`knowledge.knowTitle_${i + 1}`)
-      box.querySelector('p').innerHTML = t(`knowledge.knowDesc_${i + 1}`)
-    })
-}
-
-// ================ Portfolio Section ================>
-const portfolio = get("portfolio")
-
-function renderPortfolio() {
-  let li = ''
-  const nums = Array.from({ length: 8 }, (_, i) => i);
-
-  for (let i = nums.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1)); // 0..i
-    [nums[i], nums[j]] = [nums[j], nums[i]];
+  function renderHero() {
+    hero.innerHTML = 
+    `<div class="hero-grid"></div>
+  
+      <div class="hero-glow"></div>
+  
+      <p class="hero-tag">${t('hero.tag')} · PHP · Laravel · Vue</p>
+      <h1 class="hero-name">
+        ${t('hero.name_1')}<br><span>${t('hero.name_2')}.</span>
+      </h1>
+      <p class="hero-desc">
+        ${t('hero.desc')}
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">${t('hero.btn_1')}</a>
+        <a href="#contact" class="btn btn-ghost">${t('hero.btn_2')}</a>
+      </div>
+      <div class="hero-scroll">
+        <span class="scroll-label">scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    `
   }
 
-  portfolio.querySelector('h2').innerHTML = t("common.portfolio");
+// ============== About Section =========== >
 
-  nums.forEach(i => {
+  const about = get("about")
 
-    let img = t(`portfolio.image_${i}`);
-    let title = t(`portfolio.title_${i}`);
-    let desc = t(`portfolio.desc_${i}`);
-    let link = t(`portfolio.link_${i}`);
-    let stacks = ''
-    t(`portfolio.stack_${i}`).split(/\s*,\s*/).forEach(stack => {
-      stacks += `<p class="badge">${stack}</p>`
-    })
+  function renderAbout() {
 
-    li +=
-    `<li class="card-item swiper-slide">
-      <div class="card-link">
-        <img src="./src/img/portfolio/${img}" alt="" class="card-image clickable"
-          onclick="openImgModal(this)">
-        <div class="badge-content">
-          ${stacks}
+    about.querySelector('.section-label').innerHTML = t('about.label')
+
+    about.querySelector('.section-title').innerHTML = t('about.title')
+
+    about.querySelector(".about-text").innerHTML = t('about.text')
+
+    for (let i=1; i<=4; i++){
+      get(`trait-title-${i}`).innerHTML = `${t(`about.trait_title_${i}`)}`
+      get(`trait-text-${i}`).innerHTML = `${t(`about.trait_text_${i}`)}`
+    }
+
+    about.querySelector('.stats-bar').innerHTML = `
+    <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">${t('about.xp')}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">INFP</span>
+        <span class="stat-label">${t('about.infp')}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num"><i class="bi bi-tools"></i></span>
+        <span class="stat-label">${t('about.fullcycle')}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num"><i class="bi bi-translate"></i></span>
+        <span class="stat-label">English, Español, Italiano</span>
+      </div>`
+
+  }
+
+// ==================== Skills Section ================ >
+
+  const skills = get('skills')
+
+  function renderSkills() {
+    skills.querySelector('.section-label').innerHTML = t('skills.label')
+
+    skills.querySelector('.section-title').innerHTML = t('skills.title')
+
+    skills.querySelector('#back').innerHTML = `<h3>Backend</h3>
+        <div class="skills-grid" style="margin-top: 0; grid-template-columns: 1fr 1fr;">
+          <div class="skill-chip">
+            <span class="chip-name">PHP</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">Laravel</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">MySQL</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">REST API</span>
+            ${t('skills.stars_basic')}
+          </div>
+        </div>`
+    
+    skills.querySelector('#front').innerHTML = `<h3>Frontend</h3>
+        <div class="skills-grid" style="margin-top: 0; grid-template-columns: 1fr 1fr;">
+          <div class="skill-chip">
+            <span class="chip-name">Vue.js</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">Quasar</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">HTML/CSS</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">JavaScript</span>
+            ${t('skills.stars_advanced')}
+          </div>
+        </div>`
+
+    skills.querySelector('#infra').innerHTML = `<h3>${t('skills.infra')} &amp; ${t('skills.quality')}</h3>
+        <div class="skills-grid" style="margin-top: 0; grid-template-columns: 1fr 1fr;">
+          <div class="skill-chip">
+            <span class="chip-name">Docker</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">Git</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">Scrum</span>
+            ${t('skills.stars_advanced')}
+          </div>
+          <div class="skill-chip">
+            <span class="chip-name">${t('skills.tests')}</span>
+            ${t('skills.stars_intermediate')}
+          </div>
+        </div>`
+  }
+
+// ================ Projects Section ================>
+
+  const proj = get('projects');
+
+  function renderProj() {
+    proj.querySelector('.section-label').innerHTML = t('projects.label')
+    proj.querySelector('.section-title').innerHTML = t('projects.title')
+
+    proj.querySelector(' #project-1').innerHTML = `
+      <span class="project-num">01 /</span>
+      <h3>${t('projects.proj_title_1')}</h3>
+      <div class="img-container">
+        <img src="./src/img/portfolio/dashboard.png" alt="">
+      </div>
+      <p>${t('projects.proj_desc_1')}</p>
+      <div class="project-tags">
+        <span class="tag">Laravel</span>
+        <span class="tag">Sanctum</span>
+        <span class="tag">Predis</span>
+        <span class="tag">Quasar/Vue</span>
+        <span class="tag">SQLite</span>
+      </div>`;
+    
+    proj.querySelector('#project-2').innerHTML = `<span class="project-num">01 /</span>
+      <h3>${t('projects.proj_title_2')}</h3>
+      <div class="img-container">
+        <img src="./src/img/portfolio/email-classifier.png" alt="">
+      </div>
+      <p>${t('projects.proj_desc_2')}</p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">GPTs</span>
+        <span class="tag">IA</span>
+        <span class="tag">FastAPI</span>
+      </div>`;
+
+      proj.querySelector('#project-3').innerHTML = `<span class="project-num">01 /</span>
+      <h3>${t('projects.proj_title_3')}</h3>
+      <div class="img-container">
+        <img src="./src/img/portfolio/zelcoy.png" alt="">
+      </div>
+      <p>${t('projects.proj_desc_3')}</p>
+      <div class="project-tags">
+        <span class="tag">Java</span>
+        <span class="tag">Game Engine</span>
+        <span class="tag">Topdown</span>
+        <span class="tag">2D</span>
+      </div>`;
+  }
+
+// =============== Testimonials Section ==============>
+
+
+// =============== Contact Section ===============>
+
+  const contact = get('contact');
+
+  function renderContact() {
+    contact.querySelector('.section-label').innerHTML = t('contact.label');
+    contact.querySelector('.section-title').innerHTML = t('contact.title');
+    contact.querySelector('#info').innerHTML = t('contact.info');
+    contact.querySelector('#desc').innerHTML = t('contact.desc');
+    
+    contact.querySelector('.contact-form').innerHTML = `
+        <div class="form-row">
+          <div class="form-group">
+            <label>${t('contact.form.name')}*</label>
+            <input id="name" required type="text" placeholder="${t('contact.form.name_ph')}" />
+          </div>
+          <div class="form-group">
+            <label>${t('contact.form.email')}*</label>
+            <input id="email" required type="email" placeholder="${t('contact.form.email_ph')}" />
+          </div>
         </div>
-        <div class="card-text-content clickable" data-url="${link}"
-          onclick="openDataUrl(this)">
-          <h2 class="card-title">${title}</h2>
-          <p class="card-description">
-            ${desc}
-          </p>
+        <div class="form-group">
+          <label>${t('contact.form.subject')}</label>
+          <input id="subject" type="text" placeholder="${t('contact.form.subject_ph')}" />
         </div>
-        <button class="card-btn material-symbols-rounded clickable"
-          data-url="${link}" onclick="openDataUrl(this)">
-          arrow_forward
+        <div class="form-group">
+          <label>${t('contact.form.message')}*</label>
+          <textarea id="message" required rows="5" placeholder="${t('contact.form.message_ph')}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="cursor: none; align-self: flex-start;" id="submitBtn">
+          ${t('contact.form.send_btn')}
         </button>
-      </div>
-    </li>`
-  })
-  portfolio.querySelector('ul').innerHTML = li
-}
-// =============== Section Resume ==============>
-const resume = get('curriculo');
+        <p id="form-feedback"
+          style="font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); display: none; margin-top: 0.5rem;">
+          ${t('contact.form.feedback')}
+        </p>`
+  }
 
-function renderResume() {
-  resume.querySelector('.heading').innerHTML = t('common.resume')
-  resume.querySelector('.curriculo-text').innerHTML =
-    `<p>${t("resume.text")}<br/><br/>${t('resume.accent')}</p>`;
-  resume.querySelector('.btn-group').innerHTML =
-    `<a class="btn" href="src/pdf/${t('resume.link')}" target="_blank">
-      ${t('resume.button')}
-    </a>`
-}
+// =============== Footer ==================>
 
-// =============== Section Contact ===============>
-const contact = get('contact');
-const form = get('contactForm')
+  const f_text = get('footer-text')
 
-function renderContact() {
-  contact.querySelector('.heading').innerHTML = t('common.contact');
-  
-  form.innerHTML = 
-    `
-      <div class="input-group-2">
-        <textarea name="message" id="" cols="30" rows="10" placeholder="${t("contact.message")}"></textarea>
-      </div>
-      <div class="input-box">
-        <input type="text" name="name" placeholder="${t("contact.name")}">
-        <input type="phone" name="phone" placeholder="${t("contact.phone")}">
-        <button type="button" class="btn" id="sendMessage" onclick="send()">${t("contact.send")} <i class="bi bi-whatsapp"></i></button>
-      </div>
-    `
-}
+  const renderFooter = () => {
+    f_text.innerHTML = t('footer.text')
+  }
 
 // =============== Render ==================>
 
 function renderPage() {
   renderNav();
-  renderHome();
-  renderEducation();
-  renderKnowledge();
-  renderPortfolio();
-  renderResume();
+  renderHero();
+  renderAbout();
+  renderSkills();
+  renderProj();
   renderContact();
+  renderFooter()
 }
 
 // =============== Inicializa Botões ========= >
 function wireLangButtons() {
-  let currentLang = getLang();
 
-  if (currentLang === "en") {
+  if (getLang() === "en") {
     btnEN.style.display = "none"
   } else {
     btnPT.style.display = "none"
@@ -174,14 +280,14 @@ function wireLangButtons() {
 
   btnPT.addEventListener("click", () => {
     setLang("pt-br");
-    btnPT.style.display = "none";
+    btnPT.style.display = "none"
     btnEN.style.display = "block"
   });
 
   btnEN.addEventListener("click", () => {
     setLang("en");
     btnEN.style.display = "none"
-    btnPT.style.display = "block";
+    btnPT.style.display = "block"
   });
 }
 

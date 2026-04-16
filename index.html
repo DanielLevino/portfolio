@@ -16,189 +16,216 @@
 </head>
 
 <body>
-  <div class="container" id="container">
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-    <header class="header">
-      <a href="#home" class="logo">
-        Daniel <span>Levino</span>
-      </a>
+  <!-- NAV -->
+  <nav id="navbar">
+    <span class="nav-logo">// dev.fullstack</span>
+    <ul class="nav-links">
+    </ul>
+  </nav>
 
-      <i class="bi bi-list" id="menu-icon"></i>
+  <!-- HERO -->
+  <section id="hero">
+    
+  </section>
 
-      <nav id="navbar" class="navbar">
-
-      </nav>
-    </header>
-
-    <section class="home" id="home">
-      <div class="home-content">
-        <h1 id="home-title"></h1>
-        <h3 class="text-animation"><span id="home-iam"></span><span id="typing"></span>|</h3>
-        <p id="home-resume"></p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/daniellevino/" target="_blank"><i class="bi bi-linkedin"></i></a>
-          <a href="https://github.com/DanielLevino" target="_blank"><i class="bi bi-github"></i></a>
-          <a href="https://www.instagram.com/daniel.levinob/" target="_blank"><i class="bi bi-instagram"></i></a>
-        </div>
-
-        <div class="btn-group">
-          <!-- <a href="#" class="btn">Contratar</a> -->
-          <a id="home-contact" href="#contact" class="btn"></a>
-        </div>
-
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label"></div>
+    <h2 class="section-title"></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        
       </div>
-      <div class="home-img">
-        <img src="src/img/image_perfil.jpg" width="500px">
-      </div>
-    </section>
-
-    <section class="education" id="education">
-      <h2 id="education-title" class="heading"></h2>
-      <div class="timeline-items">
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2020</div>
-          <div class="timeline-content">
-            <h3 id="educ-title-1"></h3>
-            <p id="educ-desc-1"></p>
+      <div class="traits">
+        <div class="trait reveal">
+          <div class="trait-icon">⚡</div>
+          <div class="trait-content">
+            <h4 id="trait-title-1" class="trait-title"></h4>
+            <p id="trait-text-1" class="trait-text"></p>
           </div>
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2021</div>
-          <div class="timeline-content">
-            <h3 id="educ-title-2"></h3>
-            <p id="educ-desc-2"></p>
+        <div class="trait reveal">
+          <div class="trait-icon">🧠</div>
+          <div class="trait-content">
+            <h4 id="trait-title-2" class="trait-title"></h4>
+            <p id="trait-text-2" class="trait-text"></p>
           </div>
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2024</div>
-          <div class="timeline-content">
-            <h3 id="educ-title-3"></h3>
-            <p id="educ-desc-3"></p>
+        <div class="trait reveal">
+          <div class="trait-icon">🤝</div>
+          <div class="trait-content">
+            <h4 id="trait-title-3" class="trait-title"></h4>
+            <p id="trait-text-3" class="trait-text"></p>
           </div>
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3 id="educ-title-4"></h3>
-            <p id="educ-desc-4"></p>
-          </div>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-      <h2 class="heading"></h2>
-      <div class="services-container">
-        <div class="service-box">
-          <div class="service-info">
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="service-box">
-          <div class="service-info">
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="service-box">
-          <div class="service-info">
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="service-box">
-          <div class="service-info">
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="service-box">
-          <div class="service-info">
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="service-box">
-          <div class="service-info">
-            <h4></h4>
-            <p></p>
+        <div class="trait reveal">
+          <div class="trait-icon">🎯</div>
+          <div class="trait-content">
+            <h4 id="trait-title-4" class="trait-title"></h4>
+            <p id="trait-text-4" class="trait-text"></p>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="portfolio" id="portfolio">
-      <h2 class="heading"></h2>
-      <div class="container swiper">
-        <div class="card-wrapper">
-          <ul class="card-list swiper-wrapper">
-            <li class="card-item swiper-slide"></li>
-            <li class="card-item swiper-slide"></li>
-            <li class="card-item swiper-slide"></li>
-            <li class="card-item swiper-slide"></li>
-          </ul>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-btn swiper-button-prev"></div>
-          <div class="swiper-btn swiper-button-next"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="curriculo" id="curriculo">
-      <div class="heading">Currículo</div>
-      <div class="curriculo-container">
-        <div class="curriculo-text"></div>
-        <div class="btn-group"></div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <h2 class="heading"></h2>
-      <form id="contactForm"></form>
-    </section>
-
-    <footer class="footer">
-      <div class="social">
-        <a href="https://www.linkedin.com/in/daniellevino/"><i class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/DanielLevino"><i class="bi bi-github"></i></a>
-        <a href="https://www.instagram.com/daniel.levinob/"><i class="bi bi-instagram"></i></a>
-      </div>
-
-      <p class="copyright">© Daniel Levino <br> © Levino Tecnologia Limitada <br /> All Rights Reserved</p>
-    </footer>
-
-    <div id="modal" class="modal" onclick="closeImgModal()">
-      <img class="modal-content" id="full-image" />
     </div>
-
-    <div class="lang">
-      <a id="btn-pt"><img src="./src/img/translate/br_icon_128192.png" alt=""></a>
-      <a id="btn-en"><img src="./src/img/translate/gb_icon_128141.png" alt=""></a>
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">${t('about.xp')}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">INFP</span>
+        <span class="stat-label">${t('about.infp')}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num"><i class="bi bi-tools"></i></span>
+        <span class="stat-label">${t('about.fullcycle')}</span>
+      </div>
+      <div class="stat" style="border-right: none;">
+        <span class="stat-num"><i class="bi bi-translate"></i></span>
+        <span class="stat-label">English, Español, Italiano</span>
+      </div>
     </div>
+  </section>
 
-    <div class="version">v3.00</div>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label"></div>
+    <h2 class="section-title"></h2>
+    <div class="skill-categories reveal">
+      <div id="back" class="skill-cat">
+        
+      </div>
+      <div id="front" class="skill-cat">
+        
+      </div>
+      <div id="infra" class="skill-cat">
+        
+      </div>
+    </div>
+    <div style="margin-top: 2.5rem; text-align: center;">
+      <a href="skills.html" class="btn btn-ghost" style="display: inline-block;">Ver todas as habilidades →</a>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label"></div>
+    <h2 class="section-title"></h2>
+    <div class="projects-grid">
+      <div id="project-1" class="project-card reveal"></div>
+      <div id="project-2" class="project-card reveal"></div>
+      <div id="project-3" class="project-card reveal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-label">Depoimentos</div>
+    <h2 class="section-title">O que dizem<br>quem trabalhou comigo.</h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <p class="testi-quote">Profissional diferenciado — entrega código limpo e sabe exatamente como comunicar
+          soluções técnicas para o time de negócios. Uma raridade.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">CL</div>
+          <div>
+            <p class="testi-name">Carlos Lima</p>
+            <p class="testi-role">CTO · Startup SaaS</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-quote">O que mais me impressionou foi a proatividade. Antes de eu perceber um problema, ele já
+          tinha a solução pronta. Parceiro confiável de verdade.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AS</div>
+          <div>
+            <p class="testi-name">Ana Souza</p>
+            <p class="testi-role">Product Manager · E-commerce</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-quote">Equilíbrio emocional sob pressão é algo raro em tech. Durante um incident crítico em
+          produção, ele manteve a calma e resolveu em menos de 1h.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RF</div>
+          <div>
+            <p class="testi-name">Ricardo Ferreira</p>
+            <p class="testi-role">Lead Dev · Agência Digital</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label"></div>
+    <h2 class="section-title"></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3 id="info"></h3>
+        <p id="desc"></p>
+        <div class="contact-links">
+          <a href="mailto:seuemail@gmail.com" class="contact-link">
+            <span class="contact-link-icon"><i class="bi bi-envelope"></i></span>
+            levinotst@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/daniellevino" class="contact-link" target="_blank">
+            <span class="contact-link-icon"><i class="bi bi-linkedin"></i></span>
+            linkedin.com/in/daniellevino
+          </a>
+          <a href="https://github.com/DanielLevino" class="contact-link" target="_blank">
+            <span class="contact-link-icon"><i class="bi bi-github"></i></span>
+            github.com/DanielLevino
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=5581997194976" class="contact-link" target="_blank">
+            <span class="contact-link-icon"><i class="bi bi-whatsapp"></i></span>
+            (81)99719-4976
+          </a>
+        </div>
+      </div>
+      <form class="contact-form">
+        
+      </form>
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer>
+    <p id="footer-text"></p>
+    <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted2);">
+      // designed to ship
+    </p>
+  </footer>
+
+  <div class="lang">
+    <a id="btn-pt">
+      <img 
+        src="./src/img/translate/br_icon_128192.png" 
+        alt="" 
+        title="Traduzir para Português"
+      >
+    </a>
+    <a id="btn-en">
+      <img 
+        src="./src/img/translate/gb_icon_128141.png" 
+        alt="" 
+        title="Translate to English"
+      >
+    </a>
   </div>
 
+  <div class="version">v4.00</div>
+  
+  <script type="module" src="./src/js/script.js"></script>
   <script type="module" src="./src/js/translate.js"></script>
   <script type="module" src="./src/js/htmlInjector.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-    crossorigin="anonymous"></script>
-  <script src="src/js/script.js"></script>
 </body>
 
 </html>
