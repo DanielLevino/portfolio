@@ -17,7 +17,7 @@ function renderNav() {
   <li><a href="#projects">${t('common.projects')}</a></li>
   <li><a href="#contact">${t('common.contact')}</a></li>
   <li title="${t('common.title_resume')}">
-    <a href="./src/pdf/Curriculo_Daniel_Levino_2026.pdf" target="_blank">
+    <a href="./src/pdf/${t('nav.src')}" target="_blank">
       ${t('common.resume')}
       <span><i class="bi bi-cloud-download"></i></span>
   </a></li>`

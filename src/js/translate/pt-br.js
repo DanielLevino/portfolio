@@ -10,6 +10,7 @@ export default {
 
   nav: {
     title_resume: "Baixar Currículo",
+    src: "Curriculo_Daniel_Levino_2026.pdf"
   },
   
   hero: {
