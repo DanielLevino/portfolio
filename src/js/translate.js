@@ -1,4 +1,7 @@
 // translate.js
+
+import {CONFIG} from './config.js'
+
 const STORAGE_KEY = "lang";
 
 let messages = {};
@@ -13,10 +16,10 @@ export async function loadLanguage(lang) {
   currentLang = lang;
   // import dinâmico do arquivo de idioma
   if (lang === "pt-br") {
-    messages = (await import("./translate/pt-br.js")).default;
+    messages = (await import(`./translate/pt-br.js?v=${CONFIG.VERSION}`)).default;
     document.documentElement.lang = "pt-BR";
   } else {
-    messages = (await import("./translate/en.js")).default;
+    messages = (await import(`./translate/en.js?v=${CONFIG.VERSION}`)).default;
     document.documentElement.lang = "en";
   }
   localStorage.setItem(STORAGE_KEY, currentLang);

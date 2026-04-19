@@ -1,5 +1,7 @@
+import { CONFIG } from "./config.js";
 import { t } from "./translate.js";
 
+document.getElementById("version").innerHTML = CONFIG.VERSION
 // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
