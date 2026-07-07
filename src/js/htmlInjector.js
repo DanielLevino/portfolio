@@ -163,52 +163,79 @@ function renderNav() {
   const proj = get('projects');
 
   function renderProj() {
-    proj.querySelector('.section-label').innerHTML = t('projects.label')
-    proj.querySelector('.section-title').innerHTML = t('projects.title')
+    proj.querySelector('.section-label').innerHTML = t('projects.label');
+    proj.querySelector('.section-title').innerHTML = t('projects.title');
 
-    proj.querySelector(' #project-1').innerHTML = `
-      <span class="project-num">01 /</span>
-      <h3>${t('projects.proj_title_1')}</h3>
-      <div class="img-container">
-        <img src="./src/img/portfolio/dashboard.png" alt="">
-      </div>
-      <p>${t('projects.proj_desc_1')}</p>
-      <div class="project-tags">
-        <span class="tag">Laravel</span>
-        <span class="tag">Sanctum</span>
-        <span class="tag">Predis</span>
-        <span class="tag">Quasar/Vue</span>
-        <span class="tag">SQLite</span>
-      </div>`;
+    const rand = Array.from({ length: 9 }, (_, i) => i);
+
+    for (let i = rand.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [rand[i], rand[j]] = [rand[j], rand[i]];
+    }
     
-    proj.querySelector('#project-2').innerHTML = `<span class="project-num">01 /</span>
-      <h3>${t('projects.proj_title_2')}</h3>
-      <div class="img-container">
-        <img src="./src/img/portfolio/email-classifier.png" alt="">
-      </div>
-      <p>${t('projects.proj_desc_2')}</p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">GPTs</span>
-        <span class="tag">IA</span>
-        <span class="tag">FastAPI</span>
-      </div>`;
+    rand.forEach(i => {
 
-      proj.querySelector('#project-3').innerHTML = `<span class="project-num">01 /</span>
-      <h3>${t('projects.proj_title_3')}</h3>
-      <div class="img-container">
-        <img src="./src/img/portfolio/zelcoy.png" alt="">
-      </div>
-      <p>${t('projects.proj_desc_3')}</p>
-      <div class="project-tags">
-        <span class="tag">Java</span>
-        <span class="tag">Game Engine</span>
-        <span class="tag">Topdown</span>
-        <span class="tag">2D</span>
-      </div>`;
+      let title = t(`portfolio.title_${i}`);
+      let image = t(`portfolio.image_${i}`);
+      let desc = t(`portfolio.desc_${i}`)
+      let stacks = '';
+
+      let project = proj.querySelector(`#project-${rand[i]+1}`)
+      
+      t(`portfolio.stack_${i}`).split(/\s*,\s*/).forEach(stack => {
+        stacks += `<span class="tag">${stack}</span>`
+      })
+
+      project.innerHTML = `
+        <h3>${title}</h3>
+        <div class="img-container">
+          <img src="./src/img/portfolio/${image}" alt="">
+        </div>
+        <p>${desc}</p>
+        <div class="project-tags">
+          ${stacks}
+        </div>`;
+      
+    })
   }
 
 // =============== Testimonials Section ==============>
+
+  const testi = get('testimonials');
+
+  function renderTesti() {
+    testi.querySelector('.section-label').innerHTML = t('testimonials.label');
+    testi.querySelector('.section-title').innerHTML = t('testimonials.title');
+    
+    const rand = Array.from({ length: 7 }, (_, i) => i+1);
+
+    for (let i = rand.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [rand[i], rand[j]] = [rand[j], rand[i]];
+    }
+    console.log(rand)
+    rand.forEach(i =>{
+      console.log(i);
+      let quote = t(`testimonials.items.quote_${i}`);
+      let name = t(`testimonials.items.name_${i}`);
+      let role = t(`testimonials.items.role_${i}`);
+
+      testi.querySelector(`#testi_${rand[i-1]}`).innerHTML =
+      `<p class="testi-quote">
+        ${quote}
+      </p>
+      <div class="testi-author">
+        <div>
+          <p class="testi-name">${name}</p>
+          <p class="testi-role">${role}</p>
+        </div>
+      </div>`
+    })
+
+
+
+  }
+
 
 
 // =============== Contact Section ===============>
@@ -264,9 +291,10 @@ function renderPage() {
   renderHero();
   renderAbout();
   renderSkills();
+  renderTesti();
   renderProj();
   renderContact();
-  renderFooter()
+  renderFooter();
 }
 
 // =============== Inicializa Botões ========= >

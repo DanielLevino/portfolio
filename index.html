@@ -14,9 +14,9 @@
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   
   <!-- MODIFICAR VERSÃO -->
-  <link rel="stylesheet" href="src/css/style.css?v=4.0.02">
+  <link rel="stylesheet" href="src/css/style.css?v=4.0.03">
   <script type="module">
-    import { CONFIG } from './src/js/config.js?v=4.0.02';
+    import { CONFIG } from './src/js/config.js?v=4.0.03';
     
     const scripts = ['script.js', 'translate.js', 'htmlInjector.js'];
     scripts.forEach(s => {
@@ -129,56 +129,68 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-label"></div>
-    <h2 class="section-title"></h2>
-    <div class="projects-grid">
-      <div id="project-1" class="project-card reveal"></div>
-      <div id="project-2" class="project-card reveal"></div>
-      <div id="project-3" class="project-card reveal"></div>
+    
+    <div class="section-label">Projetos</div>
+    <h2 class="section-title">O que já foi<br>construído.</h2>
+
+    <div class="carousel" id="projectsCarousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="projectsTrack">
+          <div id="project-1" class="project-card carousel-card"></div>
+          <div id="project-2" class="project-card carousel-card"></div>
+          <div id="project-3" class="project-card carousel-card"></div>
+          <div id="project-4" class="project-card carousel-card"></div>
+          <div id="project-5" class="project-card carousel-card"></div>
+          <div id="project-6" class="project-card carousel-card"></div>
+          <div id="project-7" class="project-card carousel-card"></div>
+          <div id="project-8" class="project-card carousel-card"></div>
+          <div id="project-9" class="project-card carousel-card"></div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <div class="carousel-dots" id="projectsDots"></div>
+        <div class="carousel-btns">
+          <button class="carousel-btn" id="projectsPrev" aria-label="Anterior">←</button>
+          <button class="carousel-btn" id="projectsNext" aria-label="Próximo">→</button>
+        </div>
       </div>
     </div>
+  </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
     <div class="section-label">Depoimentos</div>
     <h2 class="section-title">O que dizem<br>quem trabalhou comigo.</h2>
-    <div class="testi-grid">
-      <div class="testi-card reveal">
-        <p class="testi-quote">Profissional diferenciado — entrega código limpo e sabe exatamente como comunicar
-          soluções técnicas para o time de negócios. Uma raridade.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">CL</div>
-          <div>
-            <p class="testi-name">Carlos Lima</p>
-            <p class="testi-role">CTO · Startup SaaS</p>
-          </div>
+ 
+    <div class="carousel" id="testiCarousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="testiTrack">
+
+          <div id="testi_1" class="testi-card carousel-card"></div>
+          <div id="testi_2" class="testi-card carousel-card"></div>
+          <div id="testi_3" class="testi-card carousel-card"></div>
+          <div id="testi_4" class="testi-card carousel-card"></div>
+          <div id="testi_5" class="testi-card carousel-card"></div>
+          <div id="testi_6" class="testi-card carousel-card"></div>
+          <div id="testi_7" class="testi-card carousel-card"></div>
+ 
         </div>
       </div>
-      <div class="testi-card reveal">
-        <p class="testi-quote">O que mais me impressionou foi a proatividade. Antes de eu perceber um problema, ele já
-          tinha a solução pronta. Parceiro confiável de verdade.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">AS</div>
-          <div>
-            <p class="testi-name">Ana Souza</p>
-            <p class="testi-role">Product Manager · E-commerce</p>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-quote">Equilíbrio emocional sob pressão é algo raro em tech. Durante um incident crítico em
-          produção, ele manteve a calma e resolveu em menos de 1h.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">RF</div>
-          <div>
-            <p class="testi-name">Ricardo Ferreira</p>
-            <p class="testi-role">Lead Dev · Agência Digital</p>
-          </div>
+ 
+      <div class="carousel-controls">
+        <div class="carousel-dots" id="testiDots"></div>
+        <div class="carousel-btns">
+          <button class="carousel-btn" id="testiPrev" aria-label="Anterior">←</button>
+          <button class="carousel-btn" id="testiNext" aria-label="Próximo">→</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- CONTACT -->
   <section id="contact">

@@ -1,3 +1,3 @@
 export const CONFIG = {
-    VERSION: "4.0.02"
+    VERSION: "4.0.03"
 }
