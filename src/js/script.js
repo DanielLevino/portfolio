@@ -36,61 +36,135 @@ document.getElementById("version").innerHTML = CONFIG.VERSION
     }
 });
 
-  // Nav scroll
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      obs.unobserve(e.target);
+    }
   });
+}, { threshold: 0.12 });
+reveals.forEach(r => obs.observe(r));
 
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(r => obs.observe(r));
+// Form
 
-  // Form
+const form = document.querySelector('.contact-form');
 
-  const form = document.querySelector('.contact-form');
+form.addEventListener('submit', (event)=>{
+  handleSubmit(event)
+})
 
-  form.addEventListener('submit', (event)=>{
-    handleSubmit(event)
-  })
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value
+  const message = document.getElementById('message').value;
+  
+  if(!name || !email || !message){
+    alert("Please fill in the required fields.");
+    return;
+  }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value
-    const message = document.getElementById('message').value;
-    
-    if(!name || !email || !message){
-      alert("Please fill in the required fields.");
-      return;
+  btn.disabled = true;
+
+  const phone = "5581997194976"; 
+  
+  var text = `Olá! Meu nome é ${name} (${email}).%0A%0A${message}`;
+
+  text = subject ? `*${subject}* %0A%0A${text}`: text;
+  
+  const wpUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+
+  btn.textContent = t('contact.form.sending');
+  
+  setTimeout(() => {
+    window.open(wpUrl, '_blank');
+    btn.textContent = t('contact.form.sent');
+    document.getElementById('form-feedback').style.display = 'block';
+  }, 1200);
+}
+
+// Carousel factory
+  function initCarousel({ trackId, dotsId, prevId, nextId, perView }) {
+    const track = document.getElementById(trackId);
+    const dotsContainer = document.getElementById(dotsId);
+    const btnPrev = document.getElementById(prevId);
+    const btnNext = document.getElementById(nextId);
+    const cards = track.querySelectorAll('.carousel-card');
+    const total = cards.length;
+    let current = 0;
+
+    // Calcular número de "páginas"
+    const pages = Math.ceil(total / perView);
+
+    // Criar dots
+    for (let i = 0; i < pages; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Página ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
     }
 
-    btn.disabled = true;
+    function goTo(page) {
+      current = Math.max(0, Math.min(page, pages - 1));
+      // Calcula quantos % avançar por card
+      const cardWidth = cards[0].offsetWidth + 24; // width + gap (1.5rem = 24px)
+      const offset = current * perView * cardWidth;
+      track.style.transform = `translateX(-${offset}px)`;
 
-    const phone = "5581997194976"; 
-    
-    var text = `Olá! Meu nome é ${name} (${email}).%0A%0A${message}`;
+      // Atualizar dots
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
 
-    text = subject ? `*${subject}* %0A%0A${text}`: text;
-    
-    const wpUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+      // Atualizar botões
+      btnPrev.disabled = current === 0;
+      btnNext.disabled = current >= pages - 1;
+    }
 
-    btn.textContent = t('contact.form.sending');
-    
-    setTimeout(() => {
-      window.open(wpUrl, '_blank');
-      btn.textContent = t('contact.form.sent');
-      document.getElementById('form-feedback').style.display = 'block';
-    }, 1200);
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+
+    // Swipe touch
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+
+    // Init
+    goTo(0);
+
+    // Recalcular ao redimensionar
+    window.addEventListener('resize', () => goTo(current));
   }
-  
+
+  // Detectar perView por tela
+  function getPerView(carouselId) {
+    if (window.innerWidth <= 700) return 1;
+    return carouselId === 'projectsCarousel' ? 3 : 2;
+  }
+
+  initCarousel({
+    trackId: 'projectsTrack', dotsId: 'projectsDots',
+    prevId: 'projectsPrev', nextId: 'projectsNext',
+    perView: getPerView('projectsCarousel')
+  });
+
+  initCarousel({
+    trackId: 'testiTrack', dotsId: 'testiDots',
+    prevId: 'testiPrev', nextId: 'testiNext',
+    perView: getPerView('testiCarousel')
+  });
